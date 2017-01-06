@@ -24,6 +24,6 @@ What makes a tensorflow model "reusable" you ask? We think it's the following:
 
 * **Models should be pip installable.** Rationale: You shouldn't have to rework your entire project structure to try out a new model. Trying a new model should ideally just be two steps:  1) `pip install your.model` 2) `import your.model`
 
-* **Models should separate graph definition from graph execution **. Rationale: Don't mix code that requires a `tf.Session` with code that is just defining your graph operations. Users of your model should be able to instantiate your graph and run it within their *own* `tf.Session`. Structuring it this way,  gives them an opportunity to augment/customize your graph before running it.
+* **Models should separate graph definition from graph execution**. Rationale: Don't mix code that requires a `tf.Session` with code that is just defining your graph operations. Users of your model should be able to instantiate your graph and run it within their *own* `tf.Session`. Structuring it this way,  gives them an opportunity to augment/customize your graph before running it.
 
 * **Models should expose references to all significant operation outputs** Rationale: Your users may be using your models for unanticipated tasks. Give them easy access to intermediate outputs and the underlying variables.
