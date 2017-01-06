@@ -1,11 +1,27 @@
 
 This is an implementation of VGG16
+
+Simple example usage:
+
 ``` python
 import tensorflow as tf
 import tfnets.vgg16 as vgg16
 
-# BUILD GRAPH
-# ===========
+# build graph
+graph = tf.Graph()
+with graph.as_default():
+    input_tensor = tf.placeholder(tf.float32, [None, 224, 224, 3])
+    net = vgg16.build(input_tensor=input_tensor)
+
+# run graph on blank image
+sess = tf.Session()
+feed_dict = {input_tensor: np.zeros([1,224,224,3])}
+print(sess.run(net.pred_softmax, feed_dict=feed_dict))
+```
+
+``` python
+import tensorflow as tf
+import tfnets.vgg16 as vgg16
 
 # you can generate the vgg16 graph operations
 graph = tf.Graph()
