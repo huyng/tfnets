@@ -1,2 +1,7 @@
-# tfnets
-common ml models implemented in tensorflow, with easy installation
+# A library of common models implemented in tensorflow
+
+# installation
+
+```
+pip install tfnets
+```
