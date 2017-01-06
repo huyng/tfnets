@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='tfnets',
-      version='0.5.1',
+      version='0.6.0',
       description='A library of common models implemented in tensorflow',
       author='Huy Nguyen',
       author_email='huy@huyng.com',
