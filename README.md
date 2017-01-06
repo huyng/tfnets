@@ -8,4 +8,4 @@ pip install tfnets
 
 ### models & usage instructions
 
-* [vgg16](https://github.com/huyng/tfnets/blob/master/tfnets/vgg16/README.md)
+* [vgg16](https://github.com/huyng/tfnets/blob/master/tfnets/vgg16)
