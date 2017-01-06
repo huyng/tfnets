@@ -153,5 +153,5 @@ def restore(sess, fpath):
 if __name__ == '__main__':
     x = tf.placeholder(tf.float32, [10, 224, 224, 3])
     net = build(x)
-    print sorted(net.keys())
-    print net.last
+    print(sorted(net.keys()))
+    print(net.last)
