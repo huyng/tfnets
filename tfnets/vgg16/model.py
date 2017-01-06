@@ -4,6 +4,7 @@ import tensorflow as tf
 import layers as L
 import tools
 
+
 def build(input_tensor=None,
           n_classes=1000,
           bgr_img_mean=None,
@@ -101,17 +102,18 @@ def build(input_tensor=None,
         flattened_shape = np.prod([s.value for s in net.last.get_shape()[1:]])
         net.flattened   = tf.reshape(net.last, [-1, flattened_shape], name="flattened")
 
-        # fully connected
-        net.fc6      = L.fully_connected(net.last, name="fc6", n_out=4096)
+        # fully connected layers
+        net.fc6      = L.dense(net.last, name="fc6", n_out=4096)
         net.fc6_drop = tf.nn.dropout(net.last, net.dropout_keep_prob)
-        net.fc7      = L.fully_connected(net.last, name="fc7", n_out=4096)
+        net.fc7      = L.dense(net.last, name="fc7", n_out=4096)
         net.fc7_drop = tf.nn.dropout(net.last, net.dropout_keep_prob)
-        net.fc8      = L.fully_connected(net.last, name="fc8", n_out=n_classes)
+        net.fc8      = L.dense(net.last, name="fc8", n_out=n_classes)
 
         # output softmax probabilities and sorted class ids from highest to lowest probability
-        net.pred_softmax  = tf.nn.softmax(net.last, name="pred_softmax")
+        net.probs = tf.nn.softmax(net.last, name="probs")
 
     return net
+
 
 def restore(sess, fpath):
     """

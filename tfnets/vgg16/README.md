@@ -28,7 +28,7 @@ with graph.as_default():
 sess = tf.Session()
 sess.run(init)
 inputs = {input_tensor: np.zeros([1,224,224,3])}
-outputs = [net.pred_softmax]
+outputs = [net.probs]
 print(sess.run(outputs, feed_dict=inputs))
 ```
 
@@ -58,7 +58,7 @@ vgg16.restore(sess, fpath="imagenet_trained_vgg16.npy")
 
 # compute softmax on blank image
 inputs = {input_tensor: np.zeros([1,224,224,3])}
-outputs = [net.pred_softmax]
+outputs = [net.probs]
 print(sess.run(outputs, feed_dict=inputs))
 
 ```
