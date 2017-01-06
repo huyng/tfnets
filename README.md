@@ -18,9 +18,9 @@ We are not the first to aggregate these models into a "model zoo". Many other im
 
 But unlike other implementations, the major goal for this project is to promote and enable the concept of "reusable" tensorflow models by following a few guiding principles.
 
-What makes a tensorflow model "reusable" you ask? We think it's the following
+What makes a tensorflow model "reusable" you ask? We think it's the following:
 
-#### The tenets of a "reusable" tensorflow model
+#### Tenets of a "reusable" tensorflow model
 
 * **Models should be pip installable.** Rationale: You shouldn't have to rework your entire project structure to try out a new model. Trying a new model should ideally just be two steps:  1) `pip install your.model` 2) `import your.model`
 
