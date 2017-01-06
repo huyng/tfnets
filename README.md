@@ -1,6 +1,6 @@
-# A library of common models implemented in tensorflow
+tfnets is a library of common computer vision models implemented in tensorflow
 
-# installation
+### installation
 
 ```
 pip install tfnets
