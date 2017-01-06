@@ -9,9 +9,9 @@ This is a tensorflow implementation of the VGG16 network by the Visual Geometery
 pip install tfnets
 ```
 
-#### Usage
+### Usage
 
-##### Simple instantiation and feed forward run:
+#### Simple instantiation and feed forward run:
 
 ``` python
 import tensorflow as tf
@@ -34,7 +34,7 @@ print(sess.run(outputs, feed_dict=inputs))
 
 The `nets` variable in this case is a [attribute dict](http://stackoverflow.com/a/14620633) that contains all layers of the VGG16 network. You can see a list of layers by calling `nets.keys()`. You can access any layer by using dot notation e.g: `net.conv1_1`, `net.fc8`,  and so on ...
 
-##### Loading a VGG16 network pretrained on imagenet
+#### Loading a VGG16 network pretrained on imagenet
 
 First, download the pretrained weights for vgg16 into your working directory:
 * [imagenet pretrained weights for vgg16](https://drive.google.com/open?id=0B7Q0GPJoPX8aSDhVUW9xZHpPcVk)
