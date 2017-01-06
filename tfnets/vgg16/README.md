@@ -1,9 +1,9 @@
 This is a tensorflow implementation of the VGG16 network by the Visual Geometery Group at Oxford. We have converted weights from their [creative commons caffemodel](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) for use in tensorflow.
 
-#### Reference
+### Reference
 - [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)
 
-#### Installation
+### Installation
 
 ```
 pip install tfnets
