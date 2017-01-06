@@ -62,7 +62,7 @@ def build(input_tensor=None,
 
 
         # convert input image to bgr and subtract mean
-        r, g, b = tf.split(split_dim=3, num_split=3, value=net.last)
+        r, g, b = tf.split(split_dim=3, num_split=3, value=net.input_tensor)
         net.bgr_centered = tf.concat(3, [
             b - bgr_vgg_mean[0],
             g - bgr_vgg_mean[1],
@@ -119,7 +119,7 @@ def restore(sess, fpath):
     session with a graph containing the vgg network.
 
     Arguments:
-        
+
     """
 
     # populate weights map
