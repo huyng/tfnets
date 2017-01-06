@@ -48,7 +48,7 @@ from tfnets import vgg16
 # create vgg16 graph operations
 graph = tf.Graph()
 with graph.as_default():
-    inp = tf.placeholder(tf.float32, [None, 224, 224, 3])
+    input_tensor = tf.placeholder(tf.float32, [None, 224, 224, 3])
     net = vgg16.build(input_tensor=inp)
 
 
