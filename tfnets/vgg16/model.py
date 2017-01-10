@@ -4,13 +4,11 @@ import tensorflow as tf
 import layers as L
 import tools
 
-
-
-def build(input_tensor=None,
-          n_classes=1000,
-          bgr_img_mean=None,
-          is_training_tensor=None,
-          scope="vgg16"):
+def inference(input_tensor=None,
+              n_classes=1000,
+              bgr_img_mean=None,
+              is_training_tensor=None,
+              scope="vgg16"):
 
     """
     This functions creates all the tensorflow graph operations for the VGG16 network using the
@@ -116,6 +114,26 @@ def build(input_tensor=None,
     return net
 
 
+def loss(net, labels_tensor):
+    logits_tensor = net.fc8
+    num_classes = logits_tensor.get_shape()[1]
+    onehot_labels = tf.one_hot(labels_tensor, num_classes)
+
+    # classification loss
+    xentropy = tf.nn.softmax_cross_entropy_with_logits(logits_tensor, onehot_labels, name='xentropy')
+    net.loss_clf = tf.reduce_mean(xentropy, name='loss_clf')
+
+    # weight decay loss
+    net.loss_wd = tf.reduce_sum(tf.pack([tf.nn.l2_loss(i) for i in tf.get_collection('variables')]))
+
+    # total_loss
+    net.loss_total = tf.add(net.loss_clf, net.loss_wd, name="loss_total")
+    return net
+
+
+# model loading
+# =============
+
 def restore(sess, fpath):
     """
     Loads the parameters of a vgg network from .npy file given a
@@ -151,7 +169,10 @@ def restore(sess, fpath):
 
 
 if __name__ == '__main__':
+    import pprint
     x = tf.placeholder(tf.float32, [10, 224, 224, 3])
-    net = build(x)
-    print(sorted(net.keys()))
-    print(net.last)
+    y = tf.placeholder(tf.int32, [10, 1])
+    net = inference(x)
+    pprint.pprint(sorted(net.keys()))
+    net = loss(net, y)
+    pprint.pprint(sorted(net.keys()))
