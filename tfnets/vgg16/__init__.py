@@ -1,1 +1,1 @@
-from .model import build, restore
+from .model import inference, loss, restore
